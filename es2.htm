@@ -1,1 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stampa Numeri</title>
+  <script>
+    function stampaNumeri() {
+      var numeroInput = document.getElementById("numeroInput").value;
+      var output = document.getElementById("output");
 
+
+      output.innerHTML = "";
+
+
+      for (var i = 1; i <= numeroInput; i++) {
+        output.innerHTML += i + "<br>";
+      }
+
+
+      var dieciPercento = numeroInput * 0.1;
+      output.innerHTML += "<br>10% del numero in input: " + dieciPercento;
+e
+      var img = document.createElement("https://i.gifer.com/7Uw.gif");
+      img.src = "https://i.gifer.com/7Uw.gif"; // Sostituisci con l'URL dell'immagine desiderata
+      img.alt = "bravo hai finito";
+      output.appendChild(img);
+    }
+  </script>
+</head>
+<body>
+  <h1>Stampa Numeri</h1>
+  <label for="numeroInput">Inserisci un numero:</label>
+  <input type="number" id="numeroInput" />
+  <button onclick="stampaNumeri()">Stampa</button>
+  <div id="output"></div>
+</body>
+</html>
