@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadrato di Quadrati con Rose e Assi</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff; /* Colore di sfondo bianco */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .quadrato {
+            width: 30px; /* Dimensione del quadrato interno */
+            height: 30px;
+            display: inline-block;
+            border: 1px solid #000; /* Nero */
+            margin: 2px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .grigio-scuro {
+            background-color: #333; /* Grigio scuro */
+            color: #fff; /* Testo bianco per contrasto */
+        }
+
+        .grigio-chiaro {
+            background-color: #f0f0f0; /* Grigio chiaro */
+        }
+    </style>
+</head>
+<body>
+    <!-- Script JavaScript per generare i quadrati -->
+    <script>
+        // Creazione di un elemento div (container)
+        const container = document.createElement('div');
+        container.className = 'container';
+        document.body.appendChild(container);
+
+        // Ciclo da 1 a 100
+        for (let i = 1; i <= 100; i++) {
+            // Creazione di un elemento div (quadrato)
+            const quadrato = document.createElement('div');
+            quadrato.className = 'quadrato';
+
+            // Assegnazione della classe alternata
+            quadrato.classList.add(i % 2 === 0 ? 'grigio-chiaro' : 'grigio-scuro');
+
+           
+            quadrato.textContent = i % 2 === 0 ? '🌹' : '🂡';
+
+            // Aggiunta del quadrato al container
+            container.appendChild(quadrato);
+        }
+    </script>
+</body>
+</html>
+
