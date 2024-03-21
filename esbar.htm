@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il  bar di Di Rella</title>
+</head>
+<body>
+    <h1>Benvenuto nel nostro bar!</h1>
+    <p>Seleziona un drink dalla lista e crea il tuo ordine.</p>
+
+    <h2>Lista dei drink disponibili:</h2>
+    <ul id="drinkList">
+        <li>(1) Old Fashioned</li>
+        <li>(2) Negroni</li>
+        <li>(3) Whiskey Sour</li>
+        <li>(4) Daiquiri</li>
+        <li>(5) Manhattan</li>
+        <li>(6) Dry Martini</li>
+      <li>(7) Espresso Martini</li>
+      <li>(8) Margarita</li>
+      <li>(9) Aperol Spritz</li>
+      <li>(10) Moscow Mule</li>
+     
+    </ul>
+
+    <button onclick="addOrder()">Aggiungi un ordine</button>
+    <button onclick="deleteOrder()">Rimuovi un ordine</button>
+    <button onclick="printOrderedDrinks()">Stampa gli ordini</button>
+
+    <h2>Ordini:</h2>
+    <ul id="orderList"></ul>
+
+    <script>
+        const drinkList = ["Old Fashioned", "Negroni", "Whiskey Sour", "Daiquiri", "Manhattan", "Dry Martini", "Espresso Martini", "Margarita", "Aperol Spritz", "Moscow Mule"];
+        const orderList = [];
+
+        function addOrder() {
+            const drinkIndex = prompt("Inserisci il numero del drink da ordinare (1-10):");
+            if (drinkIndex >= 1 && drinkIndex <= drinkList.length) {
+                orderList.push(drinkList[drinkIndex - 1]);
+                updateOrderList();
+            } else {
+                alert("Numero non valido...Riprova.");
+            }
+        }
+
+        function deleteOrder() {
+            const drinkIndex = prompt("Inserisci il numero del drink da rimuovere dall' ordine (1-10):");
+            if (drinkIndex >= 1 && drinkIndex <= orderList.length) {
+                orderList.splice(drinkIndex - 1, 1);
+                updateOrderList();
+            } else {
+                alert("Numero non valido...Riprova.");
+            }
+        }
+
+        function updateOrderList() {
+            const orderListElement = document.getElementById("orderList");
+            orderListElement.innerHTML = "";
+            orderList.forEach((drink) => {
+                const li = document.createElement("li");
+                li.textContent = drink;
+                orderListElement.appendChild(li);
+            });
+        }
+
+        function printOrderedDrinks() {
+            alert("Drink ordinati:\n" + orderList.join(", "));
+        }
+    </script>
+</body>
+</html>
