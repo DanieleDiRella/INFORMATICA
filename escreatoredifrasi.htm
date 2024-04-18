@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generatore di Frasi</title>
+<style>
+  button {
+    margin: 5px;
+  }
+</style>
+</head>
+<body>
+
+<button onclick="aggiungiSoggetto()">Aggiungi Soggetto</button>
+<button onclick="aggiungiVerbo()">Aggiungi Verbo</button>
+<button onclick="aggiungiComplemento()">Aggiungi Complemento</button>
+<button onclick="creaFrase()">Crea Frase</button>
+
+
+<div id="output"></div>
+
+<script>
+ 
+  let soggetti = [];
+  let verbi = [];
+  let complementi = [];
+
+
+  function aggiungiSoggetto() {
+    const soggetto = prompt("Inserisci un soggetto:");
+    soggetti.push(soggetto);
+    stampaArray();
+  }
+
+  function aggiungiVerbo() {
+    const verbo = prompt("Inserisci un verbo:");
+    verbi.push(verbo);
+    stampaArray();
+  }
+
+  function aggiungiComplemento() {
+    const complemento = prompt("Inserisci un complemento:");
+    complementi.push(complemento);
+    stampaArray();
+  }
+
+
+  function stampaArray() {
+    document.getElementById("output").innerHTML = `
+      <p>Soggetti: ${soggetti.join(", ")}</p>
+      <p>Verbi: ${verbi.join(", ")}</p>
+      <p>Complementi: ${complementi.join(", ")}</p>
+    `;
+  }
+
+  function creaFrase() {
+    if (soggetti.length > 0 && verbi.length > 0 && complementi.length > 0) {
+      const frase = `${soggetti[0]} ${verbi[0]} ${complementi[0]}.`;
+      alert(frase);
+    } else {
+      alert("Aggiungi almeno un soggetto, un verbo e un complemento prima di creare una frase.");
+    }
+  }
+
+ 
+
+</script>
+
+</body>
+</html>
