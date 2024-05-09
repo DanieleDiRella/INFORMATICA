@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadrati colorati</title>
+    <style>
+       
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .square {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+
+        .even {
+            background-color: darkred;
+        }
+
+        .odd {
+            background-color: lightblue;
+        }
+
+        .multipleOfSeven {
+            background-color: lightcoral;
+        }
+
+        .prime {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script>
+        // Funzione per verificare se un numero è primo
+        function isPrime(n) {
+            if (n < 2) {
+                return false;
+            }
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Creazione dell'array con numeri da 1000 a 1999
+        const numbers = [];
+        for (let i = 1000; i < 2000; i++) {
+            numbers.push(i);
+        }
+
+        // Creazione dei quadrati
+        const container = document.getElementById('container');
+        numbers.forEach((num) => {
+            // Creazione del div per il quadrato
+            const square = document.createElement('div');
+            square.classList.add('square');
+            square.textContent = num;
+
+            // Aggiunta degli stili in base al numero
+            if (num % 2 === 0) {
+                square.classList.add('even');
+            } else {
+                square.classList.add('odd');
+            }
+
+            if (num % 7 === 0) {
+                square.classList.add('multipleOfSeven');
+            }
+
+            if (isPrime(num)) {
+                square.classList.add('prime');
+            }
+
+            // Aggiunta del quadrato al container
+            container.appendChild(square);
+        });
+    </script>
+</body>
+
+</html>
