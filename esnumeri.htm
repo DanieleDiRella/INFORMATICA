@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Numeri da 1 a 1000</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        .container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Numeri da 1 a 1000</h1>
+
+    <div class="container">
+        <h2>Numeri Pari</h2>
+        <p id="pari"></p>
+    </div>
+
+    <div class="container">
+        <h2>Numeri Dispari</h2>
+        <p id="dispari"></p>
+    </div>
+
+    <div class="container">
+        <h2>Numeri Primi</h2>
+        <p id="primi"></p>
+    </div>
+
+    <div class="container">
+        <h2>Successivi dei Numeri Primi</h2>
+        <p id="successivi_primi"></p>
+    </div>
+
+    <div class="container">
+        <h2>Statistiche dei Successivi dei Numeri Primi</h2>
+        <p>Numeri pari: <span id="conta_pari"></span></p>
+        <p>Numeri primi: <span id="conta_primi"></span></p>
+    </div>
+
+    <script>
+        
+        function isPrime(num) {
+            if (num <= 1) {
+                return false;
+            }
+            if (num <= 3) {
+                return true;
+            }
+            if (num % 2 === 0 || num % 3 === 0) {
+                return false;
+            }
+            for (let i = 5; i * i <= num; i += 6) {
+                if (num % i === 0 || num % (i + 2) === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+    
+        let pari = [];
+        for (let i = 2; i <= 1000; i += 2) {
+            pari.push(i);
+        }
+        document.getElementById("pari").innerText = pari.join(", ");
+
+
+        let dispari = [];
+        for (let i = 1; i <= 1000; i += 2) {
+            dispari.push(i);
+        }
+        document.getElementById("dispari").innerText = dispari.join(", ");
+
+        let primi = [];
+        for (let i = 1; i <= 1000; i++) {
+            if (isPrime(i)) {
+                primi.push(i);
+            }
+        }
+        document.getElementById("primi").innerText = primi.join(", ");
+
+        let successivi_primi = primi.map(p => p + 1);
+        document.getElementById("successivi_primi").innerText = successivi_primi.join(", ");
+
+       
+        let conta_pari = successivi_primi.filter(x => x % 2 === 0).length;
+
+        
+        let conta_primi = successivi_primi.filter(x => isPrime(x)).length;
+
+       
+        document.getElementById("conta_pari").innerText = conta_pari;
+        document.getElementById("conta_primi").innerText = conta_primi;
+    </script>
+
+</body>
+</html>
